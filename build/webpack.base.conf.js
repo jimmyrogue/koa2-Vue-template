@@ -1,7 +1,9 @@
 //开发和生成环境相同配置写字这个里边
 /* 引入操作路径模块和webpack */
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader');
+const {
+	VueLoaderPlugin
+} = require('vue-loader');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -22,34 +24,34 @@ module.exports = {
 		chunkFilename: 'js/[name].[chunkhash].js'
 	},
 	module: {
-		rules: [
-			{
-			test: /\.vue$/,
-			loader: 'vue-loader',
-			options: {
-				loaders: {
-					css: MiniCssExtractPlugin.loader
+		rules: [{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+						css: MiniCssExtractPlugin.loader
+					}
 				}
+			},
+			{
+				test: /\.css$/,
+				use: [
+					process.env.NODE_ENV !== 'production' ?
+					'vue-style-loader' :
+					MiniCssExtractPlugin.loader,
+					'css-loader'
+				]
+			}, {
+				test: /\.js$/,
+				loader: 'babel-loader',
+				/* 排除模块安装目录的文件 */
+				exclude: /node_modules/
+			}, {
+				test: /\.png$|\.jpg$|\.gif$|\.ico$/,
+				loader: "file-loader",
+				exclude: /node_modules/
 			}
-		}, 
-		{
-			test: /\.css$/,
-			use: [
-				process.env.NODE_ENV !== 'production' ?
-				'vue-style-loader' :
-				MiniCssExtractPlugin.loader,
-				'css-loader'
-			]
-		}, {
-			test: /\.js$/,
-			loader: 'babel-loader',
-			/* 排除模块安装目录的文件 */
-			exclude: /node_modules/
-		}, {
-			test: /\.png$|\.jpg$|\.gif$|\.ico$/,
-			loader: "file-loader",
-			exclude: /node_modules/
-		}]
+		]
 	},
 	plugins: [
 		new VueLoaderPlugin(),
