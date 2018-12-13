@@ -1,7 +1,8 @@
 <template>
-	<div class="example">this is example</div>
+	<div class="test">this is example</div>
 </template>
 <style>
+	@import '../less/base.less';
 	.example {
 		color: red;
 	}

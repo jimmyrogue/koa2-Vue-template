@@ -28,11 +28,11 @@ koaWebpack({
 	config: webpackDevConf
 }).then((middleware) => {
 	app.use(middleware);
-	app.use(async ctx => {
-		const filename = path.resolve(webpackDevConf.output.path, 'index.html')
-		ctx.response.type = 'html'
-		ctx.response.body = middleware.devMiddleware.fileSystem.createReadStream(filename)
-	})
+	// app.use(async ctx => {
+	// 	const filename = path.resolve(webpackDevConf.output.path, 'index.html')
+	// 	ctx.response.type = 'html'
+	// 	ctx.response.body = middleware.devMiddleware.fileSystem.createReadStream(filename)
+	// })
 });
 
 // 配置session中间件

@@ -1,7 +1,8 @@
 // const VueRouter = require('vue-router');
 import VueRouter from 'vue-router';
-import Example from '../views/example/example.vue';
-import Example1 from '../views/example/example1.vue';
+const Example = () => import("../views/example/example.vue");
+const Example1 = () => import("../views/example/example1.vue");
+
 
 const routes = [{
 	path: '/',

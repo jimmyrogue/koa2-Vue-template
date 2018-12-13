@@ -29,16 +29,25 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						css: MiniCssExtractPlugin.loader
+						css: MiniCssExtractPlugin.loader,
+						less:  MiniCssExtractPlugin.loader
 					}
 				}
 			},
 			{
+				test: /\.less$/,
+				use: [{
+					loader: 'style-loader' // creates style nodes from JS strings
+				}, {
+					loader: 'css-loader' // translates CSS into CommonJS
+				}, {
+					loader: 'less-loader' // compiles Less to CSS
+				}]
+			},
+			{
 				test: /\.css$/,
 				use: [
-					process.env.NODE_ENV !== 'production' ?
-					'vue-style-loader' :
-					MiniCssExtractPlugin.loader,
+					process.env.NODE_ENV !== 'production' ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
 					'css-loader'
 				]
 			}, {
