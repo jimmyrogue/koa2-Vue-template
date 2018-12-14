@@ -1,8 +1,9 @@
 # koa2-Vue-template
 an koa2+Vue template repo
 
-##初始化项目
+## 初始化项目
 使用 koa2 + Vue + webpack + mysql
+以及 koa-webpack 热更新
 
 使用方法
 
