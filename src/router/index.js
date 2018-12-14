@@ -2,7 +2,7 @@
 import VueRouter from 'vue-router';
 const Example = () => import("../views/example/example.vue");
 const Example1 = () => import("../views/example/example1.vue");
-
+const Login = () => import("../views/login/login.vue");
 
 const routes = [{
 	path: '/',
@@ -10,6 +10,9 @@ const routes = [{
 },{
 	path: '/example1',
 	component: Example1
+},{
+	path: '/login',
+	component: Login
 }];
 
 

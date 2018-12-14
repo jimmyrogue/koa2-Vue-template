@@ -8,12 +8,12 @@ const config = require('./config/default.js');
 const app = new Koa();
 
 // session存储配置
-// const sessionMysqlConfig = {
-// 	user: config.database.USERNAME,
-// 	password: config.database.PASSWORD,
-// 	database: config.database.DATABASE,
-// 	host: config.database.HOST,
-// }
+const sessionMysqlConfig = {
+	user: config.database.USERNAME,
+	password: config.database.PASSWORD,
+	database: config.database.DATABASE,
+	host: config.database.HOST,
+}
 
 // app.use(koaWebpack({
 // 	config: webpackDevConf,
@@ -25,7 +25,10 @@ const app = new Koa();
 // }))
 
 koaWebpack({
-	config: webpackDevConf
+	config: webpackDevConf,
+	hotClient: {
+		allEntries: true
+	}
 }).then((middleware) => {
 	app.use(middleware);
 	// app.use(async ctx => {
@@ -36,12 +39,12 @@ koaWebpack({
 });
 
 // 配置session中间件
-// app.use(session({
-// 	key: 'USER_SID',
-// 	store: new MysqlStore(sessionMysqlConfig)
-// }))
+app.use(session({
+	key: 'USER_SID',
+	store: new MysqlStore(sessionMysqlConfig)
+}))
 
-// router(app);
+router(app);
 app.listen(3000, () => {
 	console.log('server is running at http://localhost:3000')
 })
