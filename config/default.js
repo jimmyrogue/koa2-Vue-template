@@ -4,10 +4,10 @@ const config = {
 
 	// 数据库配置
 	database: {
-		DATABASE: 'SPA',
-		USERNAME: 'root',
-		PASSWORD: 'jimmy123',
-		PORT: '3306',
+		DATABASE: '',
+		USERNAME: '',
+		PASSWORD: '',
+		PORT: '',
 		HOST: 'localhost'
 	}
 }
